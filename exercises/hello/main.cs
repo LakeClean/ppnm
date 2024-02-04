@@ -1,6 +1,6 @@
 class main{
 	static int Main(){
-		System.Console.Write("Hello world!\n");
+		System.Console.Write("Hello LakeClean\n");
 		return 0;
 		}
 	
