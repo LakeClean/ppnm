@@ -6,7 +6,7 @@ public static int Main(){
     for(int i=0;i<list.size;i+=1)System.Console.WriteLine(list[i]);
 
     double a=7,x=10;
-    System.Func<double,double> f = delegate(double x){return 1;};
+    System.Func<double,double> f = delegate(double tmp){return 1;};
     
     System.Console.WriteLine($"{f(x)}");
 

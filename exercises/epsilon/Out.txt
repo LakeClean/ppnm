@@ -1,4 +1,11 @@
+My maximum representable is 2147483647
+My minimum representable is -2147483648
+The Machine epsilon for doubles is 1.11022302462516E-16. It should be in the order of 2.22044604925031E-16.
+The Machine epsilon for floats is 1.192093E-07. It should be in the order of 1.19209289550781E-07.
+a=1.0000000000000000e+000
+b=1.0000000000000002e+000
+a==b: False, 1<b: True, 1<a: False
 d1=7.999999999999999e-001
 d2=8.000000000000000e-001
 d1==d2 ? => False
-True
+approx(d1,d2): True

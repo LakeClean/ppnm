@@ -1,0 +1,10 @@
+posix: DONE (No work needs to be generated)
+git: DONE (No work needs to be generated)
+hello: DONE (user name is hard coded into the main.cs. One can probably access the actual username somehow through a command)
+math: DONE
+wiki: DONE (No work needs to be generated)
+epsilon:
+vec:
+Input/Output:
+generic_list:
+complex:
