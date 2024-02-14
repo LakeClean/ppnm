@@ -1,1 +1,15 @@
-1 2 3
+Vector v=(1,2,3) is constructed: 1 2 3
+10*v: 10 20 30, v*10: 10 20 30
+We define additional vector u: 4 5 6
+v+u: 5 7 9
+-v: -1 -2 -3
+v-u: -3 -3 -3
+v is equal to: 1 2 3
+We test the v.print() with no argument: 1 2 3
+v.dot(u): 32, should be equal to: 32
+vec.dot(u,v): 32, should be equal to: 32
+w is the cross product of u and v and is equal to: -3 6 -3
+vec.norm(v): 3.74165738677394
+vec.approx(u,v) is: False and should be false
+vec.approx(d1,d2) is: True and should be true
+ToString of v returns: 1 2 3
