@@ -8,3 +8,5 @@ vec: DONE (More testing could be implemented)
 Input/Output: 
 generic_list:
 complex:
+plots:
+multiprocessing: DONE

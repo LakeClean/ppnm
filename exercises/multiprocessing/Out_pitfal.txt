@@ -1,0 +1,5 @@
+Main: nterms=100000000
+Total sum = 18.9978964138541
+real 0.99
+user 3.79
+sys 0.01
