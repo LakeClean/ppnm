@@ -1,0 +1,12 @@
+\
+                set terminal svg background "white";\
+                set out "Out.gnuplot.svg" ;\
+                set xlabel "x" ;\
+                set ylabel "y" ;\
+                set title "Linear Spline Interpolation" ;\
+                set key left ;\
+                plot[-1:11]\
+                        "Out.txt" with lines notitle\
+                        ,"Out.txt" using 0:10 with points pointtype 6 notitle\
+                        ,"Out.txt" using (-($0)):(-($1)) with points pointtype 6 notitle ;\
+        
