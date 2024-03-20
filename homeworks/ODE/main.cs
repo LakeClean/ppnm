@@ -73,6 +73,20 @@ public static void Main(){
 	vector ystart = new vector(1,0);
 	vector test = new vector(0,0,0,0,0.3471128135672417,0.532726851767674, -1, 0, 0,0, 1,0);
 
+	// Other interesting orbits:
+	/*
+	vx = 0.2554309326049807,
+	vy = 0.516385834327506.
+
+	vx = 0.464445237398184,
+	vy = 0.396059973403921.
+
+	vx = 0.513938054919243,
+	vy = 0.304736003875733.
+
+	vx = 0.0833000564575194,
+	vy = 0.127889282226563.
+	*/
 
 	//Solving ODE
 	var (xlist,ylist) = ODE_solver.driver(multi_body,(start,stop),test);
@@ -81,9 +95,6 @@ public static void Main(){
 	for(int i=0;i<xlist.size;i++){
 		WriteLine($"{xlist[i]} {ylist[i][0]} {ylist[i][1]}");
 		}
-    
-
-
 	}//Main
 
 }//main

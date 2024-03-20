@@ -1,0 +1,10 @@
+\
+			set terminal svg background "white";\
+			set out "Out.lngamma.gnuplot.svg" ;\
+			set xlabel "x" ;\
+			set ylabel "lngamma(x)" ;\
+			set title "Plot of lngamma function" ;\
+			set key left ;\
+			plot[-4:4] [-4:4] \
+				"out_lngamma.txt" using 1:2 with lines title "lngamma(x) with sfuns" lc rgb "blue";\
+	

@@ -1,6 +1,8 @@
 # ppnm
 Repository for my practical programming course
 
+Contains three folders: exercises, homeworks and resources. resources contain the libraries used repeatedly in the homeworks
+
  ======================================
 | #  | homework      | A | B | C | Σ   |
  ======================================
@@ -32,19 +34,22 @@ Repository for my practical programming course
  ======================================
 
 
-Exercises:
-posix: DONE (No work needs to be generated)
-git: DONE (No work needs to be generated)
-hello: DONE (user name is hard coded into the main.cs. One can probably access the actual username somehow through a command)
-math: DONE
-wiki: DONE (No work needs to be generated)
-epsilon: DONE
-vec: DONE (More testing could be implemented)
-Input/Output: Sort of done. Makefile needs doing!!!!
-generic_list: Needs input and output
-complex:
-plots:
-multiprocessing: DONE
+
+ ======================================
+Exercises:\n
+posix: DONE \n
+git: DONE  \n
+hello: DONE \n 
+math: DONE \n
+wiki: DONE \n
+epsilon: DONE \n
+vec: DONE \n
+Input/Output: DONE \n
+generic_list: DONE \n
+complex: DONE \n
+
+plots: \n
+multiprocessing: DONE \n
 
 
 ######################## NOTICE!!! ################################

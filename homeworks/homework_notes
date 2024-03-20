@@ -3,5 +3,5 @@ Progress:
 - linear_equations: A) and B) more or less done, maybe problems with accuracy
 - EVD (jacobi): 
 - ODE: A-C) more or less done. Needs plotting! Could also do with an
-	inputlist for the butchers tables.
+	inputlist for the butchers tables. Lacking interpolation!!!
 -Integration: 

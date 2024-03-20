@@ -2,8 +2,9 @@ using static System.Console;
 
 public static class main{
     static void Main(){
-        // Lets first test if we can make a vector:
-        var v = new vec(1,2,3);
+	
+    // Lets first test if we can make a vector:
+    var v = new vec(1,2,3);
 	WriteLine($"Vector v=(1,2,3) is constructed: {v}");
 	
 	// Checking operators:

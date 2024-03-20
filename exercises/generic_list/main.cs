@@ -1,7 +1,9 @@
+using System;
+using static System.Console;
 class main{
-	public static Main(){
+	public static void Main(){
 
-		var list = new genlist<double[]>
+		var list = new genlist<double[]>();
 		char[] delimiters = {' ','\t'};
 		var options = StringSplitOptions.RemoveEmptyEntries;
 		for(string line = ReadLine(); line!=null; line = ReadLine()){
@@ -18,7 +20,5 @@ class main{
 				}
 	
 	}//Main
-
-
 
 }//main
