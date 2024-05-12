@@ -1,8 +1,0 @@
-
-Notes on matrices:
-
- - Square: m=n
- - Invertible: A has an unique solution, product of A and inverse is identity
- - Triangular: Either the lower diagonal (upper triangular) or the upper diagonal (lower triangular) is zero excluding the diagonal
- - Orthogonal: A square matrix whose transpose is equal to it inverse. equally product of A and A-tranpose is identity. Also all rows and vectors are orthonormal
- - Transpose: Transpose of matrix A is the exhange of  

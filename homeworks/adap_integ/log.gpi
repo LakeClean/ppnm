@@ -1,0 +1,14 @@
+\
+							set terminal svg background "white";\
+							set out "Out.erf.gnuplot.svg" ;\
+							set xlabel "x" ;\
+							set ylabel "erf(x)" ;\
+							set title "Plot of errorfunction" ;\
+							set key left ;\
+							plot[-3:3] [-1:1] \
+									"approx_erf.txt" using 1:2 with lines title "Erf(x) with sfuns" lc rgb "blue"\
+									,"approx_erf.txt" using (-($1)):(-($2)) with lines notitle lc rgb "blue"\
+									,"out_erf.txt" using 1:2 with lines title "Erf(x) with addaptive integ." lc rgb "red"\
+									,"out_erf.txt" using (-($1)):(-($2)) with lines notitle lc rgb "red"\
+									,;\
+			

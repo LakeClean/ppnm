@@ -58,8 +58,7 @@ public class Integ{
         double b, 
         double acc=0.01, 
         double eps=0.01){
-
-        return integ(theta => f( (a+b)/2+(b-a)/2*Cos(theta) )*Sin(theta)*(b-a)/2, 0, PI, acc, eps);
+        return integ(theta => f( (a+b)/2+(b-a)*Cos(theta)/2 )*(b-a)*Sin(theta)/2, 0, PI, acc, eps);
         }//Clenshaw_Curtis
 
 }//Integ (class)

@@ -3,9 +3,10 @@ LIBS = $(addprefix -reference:,$(filter %.dll, $^))
 MKEXE = mcs -target:exe -out:$@ $(LIBS) $(CODE)
 MKLIB = mcs -target:library -out:$@ $(LIBS) $(CODE)
 
-RUN_ALL: Out.erf.gnuplot.svg Out.gamma.gnuplot.svg Out.lngamma.gnuplot.svg Makefile #Out.lambda.gnuplot.svg 
+RUN_ALL: Out.erf.gnuplot.svg Out.gamma.gnuplot.svg Out.lngamma.gnuplot.svg Makefile
 	eog Out.erf.gnuplot.svg &
 	eog Out.gamma.gnuplot.svg &
+	eog Out.lngamma.gnuplot.svg &
 
 #Plotting Error function
 Out.erf.gnuplot.svg : out_erf.txt tabulated_erf.txt
@@ -24,7 +25,7 @@ Out.erf.gnuplot.svg : out_erf.txt tabulated_erf.txt
 		'| tee log.gpi | gnuplot
 
 #Plotting gamma function
-Out.gamma.gnuplot.svg : out_gamma.txt
+Out.gamma.gnuplot.svg : out_gamma.txt tabulated_gamma.txt
 		echo '\
 				set terminal svg background "white";\
 				set out "$@" ;\
@@ -33,7 +34,8 @@ Out.gamma.gnuplot.svg : out_gamma.txt
 				set title "Plot of gamma function" ;\
 				set key left ;\
 				plot[-4:4] [-4:4] \
-					"out_gamma.txt" using 1:2 with lines title "gamma(x) with sfuns" lc rgb "blue";\
+					"tabulated_gamma.txt" using 1:2 with points title "Tabulated" lc "orange" pt "o" ps 6.0 \
+					,"out_gamma.txt" using 1:2 with lines title "gamma(x) with sfuns" lc rgb "blue";\
 		'| tee log.gpi | gnuplot
 
 
@@ -46,7 +48,7 @@ Out.lngamma.gnuplot.svg : out_lngamma.txt
 				set ylabel "lngamma(x)" ;\
 				set title "Plot of lngamma function" ;\
 				set key left ;\
-				plot[-4:4] [-4:4] \
+				plot[0:10] [-2:10] \
 					"out_lngamma.txt" using 1:2 with lines title "lngamma(x) with sfuns" lc rgb "blue";\
 		'| tee log.gpi | gnuplot
 

@@ -238,6 +238,8 @@ public bool approx(matrix B,double acc=1e-6, double eps=1e-6){
 	return true;
 }
 
+//public static void add_column_right
+
 
 //////////////////////////// My implementations ///////////////////////////
 
@@ -253,15 +255,25 @@ public bool approx(matrix B,double acc=1e-6, double eps=1e-6){
 	}//solve_upper_triangular
 
 
-// Generate random matrix
-	public static void random(matrix A,string s = "integer"){
+// Modify matrix to be random or a random symmetric (Needs to be square already)
+	public static void random(matrix A,string s = "random"){
 		var rnd = new System.Random();
 		for(int i= 0;i<A.size1;i++){
 			for(int j= 0;j<A.size2;j++){
-				A[i,j] = rnd.Next(101);
+				if (s=="random"){
+					A[i,j] = rnd.Next(101);
+				}
+				else if (s=="symmetric"){
+					int temp = rnd.Next(101);
+					A[i,j] = temp;
+					A[j,i] = temp;
+				}
+				
 			}
 		}
 	}//random
+
+
 
 // Method for reducing square system of linear equations to triangular form. Gram-Schmidt 
 
@@ -282,5 +294,56 @@ public bool approx(matrix B,double acc=1e-6, double eps=1e-6){
 
 
 
+
+// Methods for EVD
+/*
+	public static void timesJ(matrix A, intp, int q, double theta){
+		double c = Cos(theta), s = Sin(theta);
+		for(int i=0,i<A.size;i++){
+			double aip=A[i,p],aiq=A[i,q];
+			A[i,p]=c*aip-s*aiq;
+			A[i,q]=s*aip+c*aiq;
+		}
+
+	}
+
+	public static void Jtimes(matrix A, int p, int q, double theta){
+	double c=Cos(theta),s=Sin(theta);
+	for(int j=0;j<A.size1;j++){
+		double apj=A[p,j],aqj=A[q,j];
+		A[p,j]= c*apj+s*aqj;
+		A[q,j]=-s*apj+c*aqj;
+		}
+}
+
+// function for diagonalizing symmetric matrix
+	public static void cyclic(matrix A){
+		//we set criterion to be; no change in diagonal elements
+		for(int p=0; p<A.size;p++){
+			for(int q=p+1; q<A.size;q++){
+			double apq=A[p,q], app=A[p,p], aqq=[q,q];
+			double theta = 0.5*Atan2(2*apq,aqq-app);
+			double c = Cos(theta), s = Sin(theta);
+			double new_app = Exp(c,2)*app - 2*s*c*apq + Exp(s,2)*aqq;
+			double new_aqq = Exp(s,2)*app + 2*s*c*apq + Exp(c,2)*aqq;
+			if(new_app != app){
+				timesJ(A,p,q,theta);
+				Jtimes(A,p,q,-theta);
+			}
+			else if(new_aqq != aqq){
+				timesJ(A,p,q,theta);
+				Jtimes(A,p,q,-theta);
+			}
+
+			else {
+				break;
+			}
+
+
+
+			}
+		}
+	}
+	*/
 
 }//matrix

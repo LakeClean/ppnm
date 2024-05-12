@@ -272,27 +272,6 @@ public bool approx(matrix B,double acc=1e-6, double eps=1e-6){
 	}//random
 
 
-
-// Method for reducing square system of linear equations to triangular form. Gram-Schmidt 
-
-	public static (matrix, matrix) decomp(matrix A){
-		matrix Q = A.copy();
-		int m = A.size2;
-		matrix R = new matrix(m,m);
-		for(int i=0; i<m;i++){
-			R[i,i]=Q[i].norm();
-			Q[i]/=R[i,i];
-			for(int j=i+1;j<m;j++){
-				R[i,j]=Q[i].dot(Q[j]);
-				Q[j]-=Q[i] * R[i,j] ;
-			}
-		}
-	return (Q, R);
-	}
-
-
-
-
 // Methods for EVD
 
 	public static void timesJ(matrix A, intp, int q, double theta){

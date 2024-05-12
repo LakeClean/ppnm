@@ -9,16 +9,10 @@ class main{
         for (int i=0;i<test_x.Length;i++){
             test_x[i]=i;
             test_y[i]=Sin(i);
-            WriteLine($"{test_x[i]},{test_y[i]}");
+            WriteLine($"{test_x[i]} {test_y[i]}" +
+            $"{spline.linenterp(test_x, test_y, test_x[i])} {spline.linterpInteg(test_x, test_y, test_x[i])}");
         }
-        double z = 7.5;
 
-        double z_y = spline.linenterp(test_x, test_y, z);
-
-        WriteLine($"{z},{z_y}");
-
-
-//linenterp
     }//Main
 
     

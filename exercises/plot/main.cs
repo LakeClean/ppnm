@@ -27,7 +27,7 @@ class main{
                 outfile="out_lngamma.txt";
                 outstream=new System.IO.StreamWriter(outfile,append:false);
 
-                for(double x = 1; x<4; x+=0.02){
+                for(double x = 0.001; x<10; x+=0.02){
                         outstream.WriteLine($"{x} {sfuns.lngamma(x)}");
                                 }
                 outstream.Close();

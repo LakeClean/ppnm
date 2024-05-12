@@ -1,0 +1,18 @@
+Original matrix A:
+         7         15 
+        89         13 
+The ortognal matrix of eigenvectors V:
+     0.773      0.634 
+    -0.634      0.773 
+V transposed:
+     0.773     -0.634 
+     0.634      0.773 
+V_Transposed * A * V = D:
+     -41.6      -29.7 
+      44.3       61.6 
+
+         1          0 
+         0          1 
+
+         1          0 
+         0          1 
