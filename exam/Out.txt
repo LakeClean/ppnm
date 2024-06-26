@@ -1,0 +1,4 @@
+sqrt(x): estimate = 0.672196402661314 +/-0.00387893094724823, Correct value = 0.666666666666667. Abs. accuracy goal: 0.01. Number of evaluation: 1
+1/sqrt(x): estimate = 1.9880193653353 +/-0.00146262734637076, Correct value = 2. Abs. accuracy goal: 0.01. Number of evaluation: 61
+4sqrt(1-x^2): estimate = 3.1477344832046 +/-0.00490564507645495, Correct value = 3.14159265358979 Abs. accuracy goal: 0.01. Number of evaluation: 6
+ln(x)/sqrt(x): estimate = -3.99858130547293 +/-0.0038465059306989, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 573

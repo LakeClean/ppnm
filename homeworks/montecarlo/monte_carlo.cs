@@ -1,6 +1,8 @@
 using System;
 using static System.Math;
 public class monte_carlo{
+
+
     
     public static (double, double) plain(Func<vector,double> f,vector a,vector b,int N ){
         double V = 1;

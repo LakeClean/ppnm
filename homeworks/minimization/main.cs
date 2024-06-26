@@ -2,41 +2,43 @@ using static System.Console;
 using static System.Math;
 public static class main{
 
-    public static vector linear(vector x){
-        double a = 10;
-        vector b =  new vector(1);
-        b[0] = -30;
-        return a*x + b;
-    }
 
-    public static vector second_order_pol(vector v){
+    public static double Rosenbrock_valley(vector v){
         double x = v[0];
-        double a = 10;
-        double b = 1;
-        double c = -1;
-        v[0] = a*x*x + b*x + c;
-        return v;
+        double y = v[1];
+
+        return Pow((1-x),2) + 100*Pow((y-x*x),2);
     }
 
-    public static vector Rosenbrock_valley(vector v){
-        vector w = v.copy();
-        double x = w[0];
-        double y = w[1];
+    public static double Himmelblau(vector v){
+        double x = v[0];
+        double y = v[1];
 
-        v[0] = 2*(-1 + x + 200*x*x*x -200*x*y);
-        v[1] = 200*(y-x*x);
-        return v;
+        return Pow((x*x + y -11),2) + Pow((x + y*y -7),2);
     }
 
 
     public static void Main(){
+        vector in_guess; vector min; double steps;
+        // Himmelblau:
+        in_guess = new vector("4 4");
+        (steps, min) = minimization.Newton(Himmelblau,in_guess);
+        WriteLine("Finding a minimum of Himmelblau function:");
+        WriteLine($"initial guess [x={in_guess[0]} y ={in_guess[1]}]");
+        WriteLine($"Result [x={min[0]} y ={min[1]}]");
+        WriteLine($"Number of steps: {steps}");
+
+        WriteLine("################################");
+        //Rosenbrock
+        in_guess = new vector("2 2");
+        (steps, min) = minimization.Newton(Rosenbrock_valley,in_guess);
+        WriteLine("Finding a minimum of Rosenbrock valley function:");
+        WriteLine($"initial guess [x={in_guess[0]} y ={in_guess[1]}]");
+        WriteLine($"Result [x={min[0]} y ={min[1]}]");
+        WriteLine($"Number of steps: {steps}");
         
 
-        vector result;
-        vector temp = new vector("0.1");
-        temp.print();
-        result  = roots.Newton(second_order_pol,  temp);
-        result.print();
+        
         
     }//Main
 }//main

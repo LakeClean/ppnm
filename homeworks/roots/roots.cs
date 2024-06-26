@@ -2,53 +2,62 @@ using System;
 using static System.Math;
 public class roots{
 
-    public static matrix jacobian(
-        Func<vector,vector> f, 
-        vector x, 
-        vector fx = null, 
-        vector dx = null){
+    public static matrix jacobian
+        (Func<vector,vector> f,vector x,vector fx=null,vector dx=null){
+	    if(dx == null) dx = x.map(xi => Abs(xi)*Pow(2,-26));
+	    if(fx == null) fx = f(x);
+	    matrix J=new matrix(x.size);
+	    for(int j=0;j < x.size;j++){
+		    x[j]+=dx[j];
+		    vector df=f(x)-fx;
+		    for(int i=0;i < x.size;i++) {J[i,j]=df[i]/dx[j];}
+		    x[j]-=dx[j];
+		}
+	    return J;
+    }//jacobian
 
-        }//jacobian
-    
-    public static vector Newton(
+
+
+    public static (vector, double) Newton(
         Func<vector,vector> f,
         vector start, 
-        double epsilon=1e-2){
+        double epsilon=1e-10){
         
         vector x = start.copy();
         int dim = x.size;
-        while(f(x).norm() > epsilon){
+        vector fx=f(x),z,fz;
+        double count = 0;
+        while(true){
+
+            if(fx.norm() < epsilon) break;
+            count += 1;
+            if(count>1000) break;
             ///////////  Calculating the Jacobian matrix /////////////
-            matrix J = new matrix(dim,dim);
-            
-            for(int i=0; i<dim; i++){
-                double delta_x_i = Abs(x[i])*Pow(2,-26);
-                vector temp = x.copy();
-
-                for(int k=0; k<dim; k++){
-                    temp[k] += delta_x_i;
-                    J[i,k] = (f(temp)[i] - f(x)[i]) / delta_x_i ; 
-                }
-            }
-
-            ////////////  Solving J∆x = -f(x) with previously developed process //////////////
+            matrix J = new matrix(dim);
+            J = jacobian(f,x,fx);
 
             // First we decompose J and then we solve:
             matrix Q;
             matrix R; 
             (Q,R) = QRGS.decomp(J);
-            vector delta_x = QRGS.solve(Q,R,-f(x));
+            vector delta_x = QRGS.solve(Q,R,-fx);
 
             double lambda = 1;
 
-            while( (f(x+lambda*delta_x).norm() > (1-lambda/2)*f(x).norm()) && lambda >= 1/1024 ){
-                lambda *= 1/2;
+            while( true){
+                z = x + lambda*delta_x;
+                fz = f(z);
+                if (fz.norm() < (1-lambda/2)*fx.norm()) break;
+                if (lambda<1/64) break;
+
+                lambda = lambda* 1/2;
             }
 
-            x = x + lambda*delta_x;
+            x = z;
+            fx = fz;
         }
 
-        return x;
+        return (x ,count);
 
     }//Newton
 

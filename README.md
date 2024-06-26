@@ -6,28 +6,28 @@ Contains three folders: exercises, homeworks and resources. resources contain th
  ======================================
 | #  | homework      | A | B | C | Σ   |
  ======================================
-| 1  | LinEq         | 6 | 3 | - |  9  |
+| 1  | LinEq         | 6 | 3 | - |  9  | FINAL
 ---------------------------------------
-| 2  | EVD           | - | - | - |  0  |
+| 2  | EVD           | 6 | - | - |  6  | FINAL
 ---------------------------------------
-| 3  | LeastSquares  | - | - | - |  -  |
+| 3  | LeastSquares  | 6 | 3 | - |  9  | FINAL
 --------------------------------------- 
-| 4  | Spline 	     | - | - | - |  -  |
+| 4  | Spline 	     | 6 | - | - |  6  | NEEDS PLOTTING Issue with the integral
 ---------------------------------------
 | 5  | ODE           | 6 | 3 | 1 |  10 | NEEDS PLOTTING
 ---------------------------------------
-| 6  | Integration   | 6 | 3 | 1 |  10 | NEEDS PLOTTING
+| 6  | Integration   | 6 | - | - |  6  | FINAL
 ---------------------------------------
-| 7  | Monte-Carlo   | 6 | - | - |  6  | NEEDS PLOTTING
+| 7  | Monte-Carlo   | 6 | - | - |  6  | FINAL
 ---------------------------------------
-| 8  | Roots         | - | - | - |  -  |
+| 8  | Roots         | 6 | - | - |  6  | FINAL
 ---------------------------------------
-| 9  | Minimization  | - | - | - |  -  |
+| 9  | Minimization  | 6 | - | - |  6  | FINAL
 ---------------------------------------
 | 10 | Neural NetWork| - | - | - |  -  |
 ---------------------------------------
  ======================================
-|                    total points: 0   |
+|                    total points: 62  |
  ======================================
 
 
@@ -46,13 +46,4 @@ generic_list: DONE \n
 complex: DONE \n
 plots: DONE\n
 multiprocessing: DONE \n
-
-
-######################## NOTICE!!! ################################
-
-Remember to check all of the above for unnecessary code!
-This is particularly relevant for the Makefiles, where
-some things sometimes are copied from other projects
-where a library for example is used but it isn't in your current
-work.
 

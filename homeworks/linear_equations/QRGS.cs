@@ -23,7 +23,7 @@ public static class QRGS{
    public static vector solve(matrix Q, matrix R, vector b){
       
          vector c = Q.transpose()*b; 
-			for (int i=b.size-1; i>=0; i--){
+			for (int i=c.size-1; i>=0; i--){
 			   double sum = 0;
 			   for (int k=i+1;k<c.size; k++){
 				   sum += R[i,k]*c[k];

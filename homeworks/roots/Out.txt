@@ -1,4 +1,4 @@
-  Infinity 
-0.1
-11
-1
+We find a root of the linear function [f(x) = 2*x + 2] at x =-1 with 1 iterations
+We find a root of the second order pol function at x =7.62939458809342E-06 with 19 iterations
+We find a root of the Himmelblau function at x =3, y=2 with 7 iterations
+We find a root of the Rosenbrock valley function at x =1.00000000000001, y=1.00000000000002 with 680 iterations

@@ -9,7 +9,7 @@ public class spline{
     public static double linenterp(double[] x, double[] y, double z){
         int i = binsearch(x,z);
         double dy = y[i+1] - y[i];
-        double dx = x[i+1] - x[i];
+        double dx = x[i+1] - x[i]; if(!(dx>0)) throw new Exception("uups...");
     return  y[i] + dy/dx * (z- x[i]);
     }//linenterp
 

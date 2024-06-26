@@ -23,7 +23,7 @@ public static class QRGS{
    public static vector solve(matrix Q, matrix R, vector b){
       
          vector c = Q.transpose()*b; 
-			for (int i=b.size-1; i>=0; i--){
+			for (int i=c.size-1; i>=0; i--){
 			   double sum = 0;
 			   for (int k=i+1;k<c.size; k++){
 				   sum += R[i,k]*c[k];
@@ -44,7 +44,8 @@ public static class QRGS{
 
 
    //Finding inverse of the square matrix A = QR:
-   public static matrix inverse(matrix Q,matrix R){
+   public static matrix inverse(matrix A){
+      (matrix Q, matrix R) = decomp(A);
       int n = Q.size1;
 
       matrix inverse_A = new matrix(n,n);

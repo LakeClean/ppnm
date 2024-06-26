@@ -3,21 +3,18 @@ LIBS = $(addprefix -reference:,$(filter %.dll, $^))
 MKEXE = mcs -target:exe -out:$@ $(LIBS) $(CODE)
 MKLIB = mcs -target:library -out:$@ $(LIBS) $(CODE)
 
-all: Out.txt Out.gnuplot.svg Makefile;
-	cat $<
+all: Out.txt cosine_interpolation.svg cosine_integral.svg;
+	cat Out.txt
+	eog cosine_interpolation.svg
 
-#Plotting Error function
-Out.gnuplot.svg : Out.txt
-		echo '\
-                set terminal svg background "white";\
-                set out "$@" ;\
-                set xlabel "x" ;\
-                set ylabel "y" ;\
-                set title "Linear Spline Interpolation" ;\
-                set key left ;\
-                plot[-1:11] [-1:1]\
-                        "Out.txt" using 1:2 with points lc "orange" pt "o" ps 6.0 title "Data";\
-        '| tee log.gpi | gnuplot
+#Plotting cosine and interpolation
+cosine_interpolation.svg : cosine.gnuplot
+	gnuplot $<
+
+#Plotting cosine and integral
+cosine_integral.svg : antiderivative.gnuplot
+	gnuplot $<
+
 # Writing data to file
 Out.txt: main.exe
 	mono $< > $@
@@ -27,4 +24,4 @@ spline.dll : spline.cs; $(MKLIB)
 main.exe : main.cs spline.dll; $(MKEXE)
 
 clean:
-	$(RM) *.exe *.dll [Oo]ut* [Ll]og*
+	$(RM) *.exe *.dll [Oo]ut* [Ll]og* *.svg

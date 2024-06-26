@@ -41,12 +41,15 @@ public static class jacobi{
 			    double new_app = Pow(c,2)*app - 2*s*c*apq + Pow(s,2)*aqq;
 			    double new_aqq = Pow(s,2)*app + 2*s*c*apq + Pow(c,2)*aqq;
 			    if((new_app != app) || (new_aqq != aqq)){
+                    changed = true;
 				    timesJ(A,p,q,theta);
 				    Jtimes(A,p,q,-theta);
                     timesJ(V,p,q, theta);
 			    }
             }
         }}
+        for(int i=0; i<A.size1; i++){w[i] = A[i,i];}
         return (w,V);
+
     }//cyclic  
 }//jacobi

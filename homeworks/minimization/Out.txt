@@ -1,0 +1,9 @@
+Finding a minimum of Himmelblau function:
+initial guess [x=4 y =4]
+Result [x=2.99999888289796 y =2.00000452093814]
+Number of steps: 6
+################################
+Finding a minimum of Rosenbrock valley function:
+initial guess [x=2 y =2]
+Result [x=1.00001429877741 y =1.00002843451748]
+Number of steps: 15

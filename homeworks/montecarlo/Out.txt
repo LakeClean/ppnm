@@ -1,2 +1,5 @@
-1.39320392968568
-(1.38460500101213, 0.00605433438512865)
+Calculating the difficult singular integral gives:
+value: 1.3828082659907
+Correct value is: 1.39320392968568
+Estimated error is: 0.005817674798098
+Actual error is: 0.01039566369498

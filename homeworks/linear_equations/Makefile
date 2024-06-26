@@ -20,14 +20,12 @@ Out_inverse.txt: main_inverse.exe Makefile
 
 
 # Mains:
-main_decomp.exe: QRGS.dll extlib.dll main_decomp.cs ; $(MKEXE)
-main_solve.exe: QRGS.dll extlib.dll main_solve.cs ; $(MKEXE)
-main_inverse.exe: QRGS.dll extlib.dll main_inverse.cs ; $(MKEXE)
+main_decomp.exe: QRGS.dll main_decomp.cs ; $(MKEXE)
+main_solve.exe: QRGS.dll main_solve.cs ; $(MKEXE)
+main_inverse.exe: QRGS.dll main_inverse.cs ; $(MKEXE)
 
 # Libraries:
-extlib.dll: $(resources) ; $(MKDLL)
-
-QRGS.dll: QRGS.cs extlib.dll ; $(MKDLL)
+QRGS.dll: QRGS.cs $(resources) ; $(MKDLL)
 
 # Cleaning:
 clean:

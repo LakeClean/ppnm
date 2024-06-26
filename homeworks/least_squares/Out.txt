@@ -1,0 +1,12 @@
+Fitting the following data with linear function:
+t:          1          2          3          4          6          9         10         13         15 
+y:       4.76       4.61       4.48       4.28       3.97       3.38       3.23       2.72       2.41 
+Uncertainty in y:       1.26       1.09      0.893      0.935       1.01      0.886       0.93      0.735      0.831 
+We find the resulting coefficients ln(a) and -lambda:       4.96     -0.172 
+The covariant matrix: 
+     0.368    -0.0339 
+   -0.0339     0.0042 
+The diagonal element sqrt(C[1,1])=0.064810775137678 gives uncertainty in lambda 
+Halflife of Ra-224 is then T_1/2 = ln(2)/lambda = 4.0333798540306 +/- 1.52110783769794 days
+The modern value is 3.6319(23) d [https://en.wikipedia.org/wiki/Isotopes_of_radium]
+Our result is therefore within the modern value given the estimated uncertainties.
