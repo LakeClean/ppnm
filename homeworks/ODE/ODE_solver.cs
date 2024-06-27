@@ -9,7 +9,7 @@ public static class ODE_solver{
         Func<double,vector,vector> f, //The function dy/dx= f(x,y) that takes a double and a vector and returns a vector
         double x, // The prior step 
         vector y, // The prior step
-        double h
+        double h // step size
         )
         {
             //(Bogacki-Shampine 32-method):
@@ -44,7 +44,7 @@ public static class ODE_solver{
                 delta_y += h * (b[i]-b_star[i]) * ks[i];
             }
             return (yh, delta_y);
-    }//rkstep14
+    }//rkstepXY
 
     
     public static (genlist<double>,genlist<vector>) driver(
@@ -97,6 +97,31 @@ public static class ODE_solver{
     return (xs,ys);
     }//driver
     
+    public static Func<double,vector> make_linear_interpolant(genlist<double> x,genlist<vector> y){
+	    Func<double,vector> interpolant = delegate(double z){
+		    int i= binsearch(x,z);
+		    double dx = x[i+1] - x[i];
+		    vector dy = y[i+1] - y[i];
+		    return y[i]+dy/dx*(z-x[i]);
+	    };
+	return interpolant;
+    }//make_linear_interpolant
+
+    public static int binsearch(genlist<double> x, double z){
+        if(!(x[0]<=z && z<=x[x.size-1])) throw new Exception($"binsearch: z={z},{x[x.size-1]},{x[0]} not within table");
+	    int i=0, j=x.size-1;
+	    while(j-i>1){
+		    int mid=(i+j)/2;
+		    if(z>x[mid]) i=mid; else j=mid;
+		}
+	    return i;
+	}//binsearch
+
+    public static Func<double,vector> make_ode_ivp_interpolant
+    (Func<double,vector,vector> f,(double,double)interval,vector y,double acc=0.01,double eps=0.01,double hstart=0.01 ){
+	    var (xlist,ylist) = driver(f,interval,y,acc,eps,hstart);
+	    return make_linear_interpolant(xlist,ylist);
+    }//make_ode_ivp_interpolant
     
     
 }//ODE_solver

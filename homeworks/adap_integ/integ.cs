@@ -36,7 +36,7 @@ public class Integ{
             f2 = f(a + 2*(b-a)/6);
             f3 = f(a + 4*(b-a)/6);
             }
-        double Q = (2*f1 + f2 + f3 + 2*f4)/6 * (b-a);
+        double Q = (f1 + 2*f2 + 2*f3 + f4)/6 * (b-a);
         double q = (f1 + f2 + f3 + f4)/4 * (b-a);
         double err = Abs(Q-q);
         double tol = acc + eps*Abs(Q);

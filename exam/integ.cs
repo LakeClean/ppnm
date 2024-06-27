@@ -3,7 +3,7 @@ using System;
 using static System.Double;
 public class Integ{
 
-    // defining a recursive open-quadrature adaptive integrator that accepts negative limits:
+    // defining a 3-point recursive open-quadrature adaptive integrator that accepts negative limits:
 
     public static (double,double,int) integ (
         Func<double,double> f,

@@ -1,9 +1,9 @@
 ################## Part A:##########################
 Calculating integral for the following functions in interval [0,1]: 
-sqrt(x): estimate = 0.666666666666683 +/-5.77964923024108E-11, Correct value = 0.666666666666667. Abs. accuracy goal: 1E-10. Rel. accuracy goal: 6.66666666666683E-11.
-1/sqrt(x): estimate = 2 +/-5.32413776522351E-11, Correct value = 2. Abs. accuracy goal: 1E-10. Rel. accuracy goal: 2E-10.
-4sqrt(1-x^2): estimate = 3.1415926535898 +/-4.52467568890545E-11, Correct value = 3.14159265358979 Abs. accuracy goal: 1E-10. Rel. accuracy goal: 3.1415926535898E-10.
-ln(x)/sqrt(x): estimate = -4 +/-5.50898719025184E-11, Correct value = -4. Abs. accuracy goal: 1E-10. Rel. accuracy goal: -4E-10.
-The Number of times the integral approximation is better than sfuns 23/32
+sqrt(x): estimate = 0.666666671264794 +/-5.77964922664042E-11, Correct value = 0.666666666666667. Abs. accuracy goal: 1E-10. Rel. accuracy goal: 6.66666671264794E-11.
+1/sqrt(x): estimate = 1.99999999228517 +/-5.32413775199485E-11, Correct value = 2. Abs. accuracy goal: 1E-10. Rel. accuracy goal: 1.99999999228517E-10.
+4sqrt(1-x^2): estimate = 3.1415926596682 +/-4.52467568654213E-11, Correct value = 3.14159265358979 Abs. accuracy goal: 1E-10. Rel. accuracy goal: 3.1415926596682E-10.
+ln(x)/sqrt(x): estimate = -3.99999998946671 +/-5.50898719620221E-11, Correct value = -4. Abs. accuracy goal: 1E-10. Rel. accuracy goal: -3.99999998946671E-10.
+The Number of times the integral approximation is better than sfuns 15/32
 ################## Part B:##########################
-1/sqrt(x): (2.00000000000047, 4.72398675656864E-11, 45919), 2
+1/sqrt(x): (2.00000000502511, 4.7239867604425E-11, 45919), 2
