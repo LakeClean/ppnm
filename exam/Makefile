@@ -2,7 +2,7 @@ CODE = $(filter %.cs,$^)
 DLLS = $(addprefix -reference:,$(filter %.dll,$^))
 MKEXE = mcs -target:exe -out:$@ $(DLLS) $(CODE)
 MKDLL = mcs -target:library -out:$@ $(DLLS) $(CODE)
-resources = ~/repos/ppnm/resources/vector.cs ~/repos/ppnm/resources/sfuns.cs
+resources = ~/repos/ppnm/resources/vector.cs ~/repos/ppnm/resources/sfuns.cs ~/repos/ppnm/resources/integ.cs ~/repos/ppnm/resources/genlist.cs
 
 
 all: Out.txt Makefile main.exe

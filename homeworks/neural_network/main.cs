@@ -21,13 +21,12 @@ public static class main{
 
     instream.Close();
 
-
     vector result = ann.train(x,y);
     
     for(int i=0; i<x.size; i+= 1){
         double g = Cos(5*x[i]-1)*Exp(-x[i]*x[i]);
         double value = ann.response(x[i],result);
-        WriteLine($"{g} {value} {y[i]}");
+        WriteLine($"{x[i]} {y[i]} {g} {value}");
     }
         
         

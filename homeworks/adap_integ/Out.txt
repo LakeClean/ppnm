@@ -1,9 +1,11 @@
 ################## Part A:##########################
 Calculating integral for the following functions in interval [0,1]: 
-sqrt(x): estimate = 0.666666671264794 +/-5.77964922664042E-11, Correct value = 0.666666666666667. Abs. accuracy goal: 1E-10. Rel. accuracy goal: 6.66666671264794E-11.
-1/sqrt(x): estimate = 1.99999999228517 +/-5.32413775199485E-11, Correct value = 2. Abs. accuracy goal: 1E-10. Rel. accuracy goal: 1.99999999228517E-10.
-4sqrt(1-x^2): estimate = 3.1415926596682 +/-4.52467568654213E-11, Correct value = 3.14159265358979 Abs. accuracy goal: 1E-10. Rel. accuracy goal: 3.1415926596682E-10.
-ln(x)/sqrt(x): estimate = -3.99999998946671 +/-5.50898719620221E-11, Correct value = -4. Abs. accuracy goal: 1E-10. Rel. accuracy goal: -3.99999998946671E-10.
+ - sqrt(x) with limits [0,1]: estimate = 0.668497206477494 +/-0.000451854545635342, Correct value = 0.666666666666667. Abs. accuracy goal: 0.001. Number of evaluation: 8
+ - 1/sqrt(x) with limits [0,1]: estimate = 1.98996107360906 +/-0.00197891438521893, Correct value = 2. Abs. accuracy goal: 0.01. Number of evaluation: 2146
+ - 4sqrt(1-x^2) with limits [0,1]: estimate = 3.16492551135203 +/-0.00612364429674605, Correct value = 3.14159265358979 Abs. accuracy goal: 0.01. Number of evaluation: 6
+ - ln(x)/sqrt(x) with limits [0,1]: estimate = -3.97055322690525 +/-0.00638894328969539, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 16658
+ - 1/x**2 with limits [1,inf]: estimate = 1 +/-0, Correct value = 1. Abs. accuracy goal: 0.01. Number of evaluation: 4
+ - x*exp(-x*x) with limits [-inf,inf]: estimate = 0 +/-0, Correct value = 0. Abs. accuracy goal: 0.01. Number of evaluation: 4
 The Number of times the integral approximation is better than sfuns 15/32
 ################## Part B:##########################
-1/sqrt(x): (2.00000000502511, 4.7239867604425E-11, 45919), 2
+1/sqrt(x): (2.01732826712475, 0.00668086776241075, 4), 2

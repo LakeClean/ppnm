@@ -1,4 +1,30 @@
-sqrt(x): estimate = 0.672196402661314 +/-0.00387893094724823, Correct value = 0.666666666666667. Abs. accuracy goal: 0.01. Number of evaluation: 1
-1/sqrt(x): estimate = 1.9880193653353 +/-0.00146262734637076, Correct value = 2. Abs. accuracy goal: 0.01. Number of evaluation: 61
-4sqrt(1-x^2): estimate = 3.1477344832046 +/-0.00490564507645495, Correct value = 3.14159265358979 Abs. accuracy goal: 0.01. Number of evaluation: 6
-ln(x)/sqrt(x): estimate = -3.99858130547293 +/-0.0038465059306989, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 573
+################### Exam project: Adaptive recursive integrator with subdivision in three subintervals. #########################
+ - We utilize the resuable points x_i = {1/6, 3/6, 5/6}
+ - This will for the trapezium rule and rectangle rule give the weights w_i={3/8,2/8,3/8} and v_i={1/3,1/3,1/3}
+ - These weights are checked in the pdf: 3point_open_quadrature.pdf
+
+################### Testing: We test our integrator on the following integrals. ###############################
+Function:      Estimate            Tabulated:          Est. error:         Actual error:       N-evaluations:      
+sqrt(x)        0.6722              0.6667              0.0039              0.0055              3                   
+1/sqrt(x)      1.8941              2                   0.01                0.1059              10                  
+4sqrt(1-x^2)   3.1742              3.1416              0.0322              0.0326              3                   
+ln(x)/sqrt(x)  -3.9982             -4                  0.0038              0.0018              74                  
+1/x**2         1                   1                   0                   0                   3                   
+x*exp(-x*x)    0                   0                   0                   0                   3                   
+Sqrt(x)*Exp(-x)0.8956              0.8862              0.0066              0.0093              6                   
+
+#################### Comparing integrator with homework-integrator: #############################
+Function:      Estimate            Tabulated:          Est. error:         Actual error:       N-evaluations:      
+sqrt(x)        0.6848              0.6667              0.0061              0.0181              4                   
+1/sqrt(x)      1.99                2                   0.002               0.01                2146                
+4sqrt(1-x^2)   3.1905              3.1416              0.0149              0.0489              4                   
+ln(x)/sqrt(x)  -3.9529             -4                  0.0075              0.0471              2146                
+1/x**2         1                   1                   0                   0                   4                   
+x*exp(-x*x)    0                   0                   0                   0                   4                   
+Sqrt(x)*Exp(-x)0.8922              0.8862              0.0047              0.0059              8                   
+
+###################### Comments: #################################
+ - It appears that the homework-integrator that only subdivides into 2 has a lower actual error.
+ - The homework integrator makes many more evaluations for some integrals, while we seem 
+     to mitigate this by subdividing in threes instead of 2.
+ - An issue with the program is that we reach Stack Overflow if we require too high an accuracy.

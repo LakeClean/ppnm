@@ -4,7 +4,7 @@ MKEXE = mcs -target:exe -out:$@ $(DLLS) $(CODE)
 MKDLL = mcs -target:library -out:$@ $(DLLS) $(CODE)
 resources = ~/repos/ppnm/resources/matrix.cs ~/repos/ppnm/resources/vector.cs ~/repos/ppnm/resources/QRGS.cs ~/repos/ppnm/resources/minimization.cs
 
-all: Out.txt Makefile main.exe ann.dll
+all: Out.txt A.svg main.cs ann.cs
 	cat Out.txt 
 
 Out.txt: main.exe
@@ -13,7 +13,11 @@ Out.txt: main.exe
 main.exe: main.cs ann.dll
 	$(MKEXE)
 
-ann.dll: ann.cs $(resources); $(MKDLL)
+#Plotting:
+A.svg: A.gnuplot Out.txt
+	gnuplot $<
+
+ann.dll: ann.cs $(resources); $(MKDLL) 
 
 clean:
 		$(RM) *.exe *.dll [Oo]ut* log.*

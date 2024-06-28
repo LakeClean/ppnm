@@ -12,7 +12,7 @@ Contains three folders: exercises, homeworks and resources. resources contain th
 ---------------------------------------
 | 3  | LeastSquares  | 6 | 3 | - |  9  | FINAL
 --------------------------------------- 
-| 4  | Spline 	     | 6 | - | - |  6  | NEEDS PLOTTING Issue with the integral
+| 4  | Spline 	     | 6 | - | - |  6  | FINAL
 ---------------------------------------
 | 5  | ODE           | 6 | 3 | - |  9  | FINAL
 ---------------------------------------
@@ -27,7 +27,7 @@ Contains three folders: exercises, homeworks and resources. resources contain th
 | 10 | Neural NetWork| - | - | - |  -  |
 ---------------------------------------
  ======================================
-|                    total points: 61  |
+|                    total points: 63  |
  ======================================
 
 

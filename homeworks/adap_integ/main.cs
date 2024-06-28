@@ -23,12 +23,31 @@ public class main{
         WriteLine("################## Part A:##########################");
         //Checking some integrals:
         WriteLine("Calculating integral for the following functions in interval [0,1]: ");
-        double acc = 1e-10;
+        double acc = 1e-2;
         double eps = 1e-10;
         double integral;
         double error;
         int neval;
 
+        (integral,error, neval) = Integ.integ(x => Sqrt(x),0,1,1e-3,eps);
+        WriteLine($" - sqrt(x) with limits [0,1]: estimate = {integral} +/-{error}, Correct value = {2.0/3}. Abs. accuracy goal: {1e-3}. Number of evaluation: {neval}");
+        
+        (integral,error, neval) = Integ.integ(x => 1/Sqrt(x),0,1,acc,eps);
+        WriteLine($" - 1/sqrt(x) with limits [0,1]: estimate = {integral} +/-{error}, Correct value = {2.0}. Abs. accuracy goal: {acc}. Number of evaluation: {neval}");
+        
+        (integral,error, neval) = Integ.integ(x => 4*Sqrt(1 - x*x),0,1,acc,eps);
+        WriteLine($" - 4sqrt(1-x^2) with limits [0,1]: estimate = {integral} +/-{error}, Correct value = {PI} Abs. accuracy goal: {acc}. Number of evaluation: {neval}");
+        
+        (integral,error, neval) = Integ.integ(x => Log(x)/Sqrt(x),0,1,acc,eps);
+        WriteLine($" - ln(x)/sqrt(x) with limits [0,1]: estimate = {integral} +/-{error}, Correct value = {-4.0}. Abs. accuracy goal: {acc}. Number of evaluation: {neval}");
+
+        (integral,error, neval) = Integ.integ(x => Pow(x,-2),1,double.PositiveInfinity,acc,eps);
+        WriteLine($" - 1/x**2 with limits [1,inf]: estimate = {integral} +/-{error}, Correct value = {1}. Abs. accuracy goal: {acc}. Number of evaluation: {neval}");
+
+        (integral,error, neval) = Integ.integ(x => x*Exp(-x*x),double.NegativeInfinity,double.PositiveInfinity,acc,eps);
+        WriteLine($" - x*exp(-x*x) with limits [-inf,inf]: estimate = {integral} +/-{error}, Correct value = {0}. Abs. accuracy goal: {acc}. Number of evaluation: {neval}");
+
+        /*
         (integral,error, neval) = Integ.integ(x => Sqrt(x),0,1,acc,eps);
         WriteLine($"sqrt(x): estimate = {integral} +/-{error}, Correct value = {2.0/3}. Abs. accuracy goal: {acc}. Rel. accuracy goal: {eps*integral}.");
 
@@ -40,7 +59,7 @@ public class main{
 
         (integral,error, neval) = Integ.integ(x => Log(x)/Sqrt(x),0,1,acc,eps);
         WriteLine($"ln(x)/sqrt(x): estimate = {integral} +/-{error}, Correct value = {-4.0}. Abs. accuracy goal: {acc}. Rel. accuracy goal: {eps*integral}.");
-
+        */
 
         //Importing tabulated errorfunction found on wikipedia:
         string infile = "tabulated_erf.txt";

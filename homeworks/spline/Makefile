@@ -2,10 +2,10 @@ CODE = $(filter %.cs, $^)
 LIBS = $(addprefix -reference:,$(filter %.dll, $^))
 MKEXE = mcs -target:exe -out:$@ $(LIBS) $(CODE)
 MKLIB = mcs -target:library -out:$@ $(LIBS) $(CODE)
+resources = ~/repos/ppnm/resources/matrix.cs ~/repos/ppnm/resources/vector.cs
 
 all: Out.txt cosine_interpolation.svg cosine_integral.svg;
 	cat Out.txt
-	eog cosine_interpolation.svg
 
 #Plotting cosine and interpolation
 cosine_interpolation.svg : cosine.gnuplot
@@ -19,7 +19,7 @@ cosine_integral.svg : antiderivative.gnuplot
 Out.txt: main.exe
 	mono $< > $@
 
-spline.dll : spline.cs; $(MKLIB)
+spline.dll : spline.cs $(resources); $(MKLIB)
 
 main.exe : main.cs spline.dll; $(MKEXE)
 

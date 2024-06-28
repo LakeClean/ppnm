@@ -10,7 +10,7 @@ class main{
         double[] y = new double[10];
         for (int i=0;i<x.Length;i++){
             x[i]=i;
-            y[i]= Cos(i) + 1;
+            y[i]= Cos(i);
             outstream_cos.WriteLine($"{i} {y[i]}");
 
             }
@@ -25,20 +25,16 @@ class main{
             outstream_interpolation.WriteLine($"{i} {spline.linenterp(x,y,i)} {spline.linterpInteg(x, y, i)}");
         }
         outstream_interpolation.Close();
-        
-        double[] test_x = new double[10];
-        double[] test_y = new double[10];
-        double[] test_z = new double[10];
-        for (int i=0;i<test_x.Length;i++){
-            test_x[i]=i;
-            test_y[i]= Cos(i);
-            test_z[i] = Sin(i);
-            }
 
-        for(int i = 0; i <test_x.Length; i++){
-            double k = spline.linterpInteg(test_x, test_y, i);
-            WriteLine($"{test_x[i]} {test_y[i]} {test_z[i]} {k}");
+
+        // Testing quadratic spline:
+        for (int i=0;i<x.Length;i++){
+            x[i]=i;
+            y[i]= Sin(i);
         }
+        spline.qspline abc = new spline.qspline(x,y);
+        
+
     }//Main
 
     
