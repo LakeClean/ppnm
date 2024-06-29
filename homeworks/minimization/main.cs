@@ -2,6 +2,11 @@ using static System.Console;
 using static System.Math;
 public static class main{
 
+    public static double polynomial(vector v){
+        double x = v[0];
+        return 2*x*x + 2*x + 3;
+    }
+
 
     public static double Rosenbrock_valley(vector v){
         double x = v[0];
@@ -35,6 +40,15 @@ public static class main{
         WriteLine("Finding a minimum of Rosenbrock valley function:");
         WriteLine($"initial guess [x={in_guess[0]} y ={in_guess[1]}]");
         WriteLine($"Result [x={min[0]} y ={min[1]}]");
+        WriteLine($"Number of steps: {steps}");
+
+        WriteLine("################################");
+        //Pol
+        in_guess = new vector("2");
+        (steps, min) = minimization.Newton(polynomial,in_guess);
+        WriteLine("Finding a minimum of Polynomial function[2*x*x + 2*x + 3]:");
+        WriteLine($"initial guess [x={in_guess[0]}]");
+        WriteLine($"Result [x={min[0]}]");
         WriteLine($"Number of steps: {steps}");
         
 

@@ -7,3 +7,8 @@ Finding a minimum of Rosenbrock valley function:
 initial guess [x=2 y =2]
 Result [x=1.00001429877741 y =1.00002843451748]
 Number of steps: 15
+################################
+Finding a minimum of Polynomial function[2*x*x + 2*x + 3]:
+initial guess [x=2]
+Result [x=-0.500000033527613]
+Number of steps: 2

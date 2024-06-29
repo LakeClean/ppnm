@@ -2,6 +2,60 @@ using System;
 using static System.Math;
 public class minimization{
 
+    public static int count1 = 0;
+	public static int count2 = 0;
+
+    public static vector qnewton(
+		Func<vector,double> f, // objective function 
+		vector start,
+		double acc = 1e-6, //tolerance for accepting gradient
+		double eps = 1e-6
+	){
+        count1 = 0;
+		count2 = 0;
+        vector x = start.copy();
+        int n = x.size;
+        matrix B = matrix.id(n);
+        vector grad_f, dx;
+		vector newgrad = gradient(f,x);
+		grad_f = newgrad;
+		double lambda;
+        while(grad_f.norm() > acc){
+            grad_f = newgrad;
+            dx = - (B * grad_f); //Calculating Newton step
+            lambda = 1;
+            count1 += 1;
+            while(true){
+                count2 += 1;
+                if(f(x+lambda*dx) < f(x)){ //accept the step and update B:
+                    vector s = lambda * dx;
+                    x = x + s;
+                    newgrad = gradient(f, x);
+                    vector y = newgrad - grad_f;
+                    vector u = s - B * y;
+                    //Broyden update
+                    double uTy = u%y;
+                    if(Abs(uTy) < eps) break; //avoiding dividing by zero
+					matrix uuT = matrix.outer(u,u);
+					matrix dB = uuT/uTy;
+                    B = B + dB;
+                    break;
+                }
+                lambda /= 2;
+
+                if(lambda < 1.0/1024.0){ //accept the step and reset B
+                    x = x + lambda*dx;
+                    newgrad = gradient(f,x);
+                    B.set_unity();
+                    break;
+
+                };
+            };
+
+        };
+        return x;
+    }//qnewton
+
     
     public static vector gradient(Func<vector,double> f,vector x){
         int dim = x.size;
@@ -68,8 +122,8 @@ public class minimization{
 }*/
     
     
-    public static (double, vector) Newton(Func<vector,double> f,vector start, double acc=1e-3){
-        vector x = start;
+    public static (int, vector) Newton(Func<vector,double> f,vector start, double acc=1e-3){
+        vector x = start.copy();
 
         // Iterative Newtons method 
         int count = 0;
@@ -109,38 +163,4 @@ public class minimization{
         return (count, x);
 
     }//Newton
-    
-
-    /*
-    public static vector Newton(
-	Func<vector,double> f,
-	vector x,              
-	double acc=1e-3       
-){
-	do{ 
-		var grad_f = gradient(f,x);
-		if(grad_f.norm() < acc) break;
-		var H = Hessian(f,x);
-		matrix Q;
-        matrix R; 
-        (Q,R) = QRGS.decomp(H);
-
-        vector dx = QRGS.solve(Q,R,-grad_f);
-
-
-		double lambda=1,fx=f(x);
-		do{ 
-			if( f(x+lambda*dx) < fx ) break; 
-			if( lambda < 1/1024 ) break; 
-			lambda/=2;
-		}while(true);
-		x+=lambda*dx;
-	}while(true);
-	return x;
-}//newton
-*/
-    
-
-
-}//roots
-
+}//minimization

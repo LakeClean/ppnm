@@ -7,6 +7,5 @@ set tics out
 set grid 
 set title "g(x)=Cos(5*x-1)*Exp(-x*x)" 
 plot\
-"Out.txt" using 1:2 with points title 'Tabulated',\
-"Out.txt" using 1:3 with lines title 'g(x)',\
-"Out.txt" using 1:4 with points title 'Interpolated'\
+"Out.txt" using 1:2 with lines title 'g(x)',\
+"Out.txt" using 1:3 with points title 'Interpolated'\

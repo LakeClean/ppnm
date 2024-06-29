@@ -20,7 +20,8 @@ A.svg: A.gnuplot Out.txt
 ann.dll: ann.cs $(resources); $(MKDLL) 
 
 clean:
-		$(RM) *.exe *.dll [Oo]ut* log.*
+		$(RM) *.exe [Oo]ut* log.* *.dll *.svg
+
 
 
 
