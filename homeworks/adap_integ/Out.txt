@@ -6,6 +6,12 @@ Calculating integral for the following functions in interval [0,1]:
  - ln(x)/sqrt(x) with limits [0,1]: estimate = -3.97055322690525 +/-0.00638894328969539, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 16658
  - 1/x**2 with limits [1,inf]: estimate = 1 +/-0, Correct value = 1. Abs. accuracy goal: 0.01. Number of evaluation: 4
  - x*exp(-x*x) with limits [-inf,inf]: estimate = 0 +/-0, Correct value = 0. Abs. accuracy goal: 0.01. Number of evaluation: 4
-The Number of times the integral approximation is better than sfuns 15/32
+The Number of times the integral approximation is better than sfuns 18/32
+ 
 ################## Part B:##########################
-1/sqrt(x): (2.01732826712475, 0.00668086776241075, 4), 2
+We use Clenshaw-Curtis variable transformation: 
+ - x*exp(-x*x) with limits [0,1]: estimate = -3.97682113487071 +/-0.00457285124259985, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 26
+ - x*exp(-x*x) with limits [0,1]: estimate = 2.01732826712475 +/-0.00668086776241075, Correct value = 2. Abs. accuracy goal: 0.01. Number of evaluation: 4
+We find that the above equations evaluate the integrals in 26 and 4 evaluations respectively.
+I don't think numpy has a well known integrator but scipy does 'scipy.integrate.quad'.
+The python integrator with the same abs. and rel accuracy does 231 and 271 evaluations respectively.

@@ -47,19 +47,7 @@ public class main{
         (integral,error, neval) = Integ.integ(x => x*Exp(-x*x),double.NegativeInfinity,double.PositiveInfinity,acc,eps);
         WriteLine($" - x*exp(-x*x) with limits [-inf,inf]: estimate = {integral} +/-{error}, Correct value = {0}. Abs. accuracy goal: {acc}. Number of evaluation: {neval}");
 
-        /*
-        (integral,error, neval) = Integ.integ(x => Sqrt(x),0,1,acc,eps);
-        WriteLine($"sqrt(x): estimate = {integral} +/-{error}, Correct value = {2.0/3}. Abs. accuracy goal: {acc}. Rel. accuracy goal: {eps*integral}.");
-
-        (integral,error, neval) = Integ.integ(x => 1/Sqrt(x),0,1,acc,eps);
-        WriteLine($"1/sqrt(x): estimate = {integral} +/-{error}, Correct value = {2.0}. Abs. accuracy goal: {acc}. Rel. accuracy goal: {eps*integral}.");
-
-        (integral,error, neval) = Integ.integ(x => 4*Sqrt(1 - x*x),0,1,acc,eps);
-        WriteLine($"4sqrt(1-x^2): estimate = {integral} +/-{error}, Correct value = {PI} Abs. accuracy goal: {acc}. Rel. accuracy goal: {eps*integral}.");
-
-        (integral,error, neval) = Integ.integ(x => Log(x)/Sqrt(x),0,1,acc,eps);
-        WriteLine($"ln(x)/sqrt(x): estimate = {integral} +/-{error}, Correct value = {-4.0}. Abs. accuracy goal: {acc}. Rel. accuracy goal: {eps*integral}.");
-        */
+    
 
         //Importing tabulated errorfunction found on wikipedia:
         string infile = "tabulated_erf.txt";
@@ -84,7 +72,7 @@ public class main{
         for(int i = 0;i<k.size;i+=1){
             tabulated_value = y[i];
             approx_value = sfuns.erf(k[i]);
-            integral_value = erf(k[i],1e-8,1e-8);
+            integral_value = erf(k[i],1e-15,1e-15);
             if(Abs(tabulated_value - approx_value )>Abs(tabulated_value - integral_value )){N+=1;}
 
             outstream.WriteLine($"{k[i]} {tabulated_value} {approx_value} {integral_value}");
@@ -92,18 +80,19 @@ public class main{
         outstream.Close();
         WriteLine($"The Number of times the integral approximation is better than sfuns {N}/{k.size}");
 
-
+        WriteLine(" ");
         WriteLine("################## Part B:##########################");
-
+        WriteLine("We use Clenshaw-Curtis variable transformation: ");
         //Using Clenshaw-Curtis variable transformation:
-        WriteLine($"1/sqrt(x): {Integ.Clenshaw_Curtis(x => 1/Sqrt(x),0,1,acc,eps)}, {2.0}");
-        //WriteLine($"ln(x)/sqrt(x): {Integ.Clenshaw_Curtis(x => Log(x)/Sqrt(x),0,1,acc,eps)}, {-4.0}");
-        /*
-        WriteLine("Notice that we go from ~1million evaluation of the integral to less than 200 evaluations");
-        WriteLine($"{Integ.integ(x=>Exp(-Pow(x,2)),-1.1/0,1.1/0)} {Sqrt(PI)}");
-        WriteLine($"{Integ.integ(x=>Exp(-Pow(x,2)),-1.1/0,0)} {Sqrt(PI)/2}");
-        WriteLine($"{Integ.integ(x=>Exp(-Pow(x,2)),0,1.1/0)} {Sqrt(PI)/2}");
-        */
+        (integral,error, neval) = Integ.Clenshaw_Curtis(x => Log(x)/Sqrt(x),0,1,0.01,eps);
+        WriteLine($" - x*exp(-x*x) with limits [0,1]: estimate = {integral} +/-{error}, Correct value = {-4}. Abs. accuracy goal: {acc}. Number of evaluation: {neval}");
+
+        (integral,error, neval) = Integ.Clenshaw_Curtis(x => 1/Sqrt(x),0,1,acc,eps);
+        WriteLine($" - x*exp(-x*x) with limits [0,1]: estimate = {integral} +/-{error}, Correct value = {2}. Abs. accuracy goal: {acc}. Number of evaluation: {neval}");
+
+        WriteLine($"We find that the above equations evaluate the integrals in 26 and 4 evaluations respectively.");
+        WriteLine("I don't think numpy has a well known integrator but scipy does: 'scipy.integrate.quad'.");
+        WriteLine("The python integrator with the same abs. and rel accuracy does 231 and 271 evaluations respectively.");
 
 
 

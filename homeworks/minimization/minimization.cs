@@ -33,7 +33,7 @@ public class minimization{
                     newgrad = gradient(f, x);
                     vector y = newgrad - grad_f;
                     vector u = s - B * y;
-                    //Broyden update
+                    //SR1 Broyden update
                     double uTy = u%y;
                     if(Abs(uTy) < eps) break; //avoiding dividing by zero
 					matrix uuT = matrix.outer(u,u);

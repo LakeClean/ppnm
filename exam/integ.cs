@@ -44,14 +44,16 @@ public class Integ3{
         double q = (f1 + f2 + f3)/3 * h;
         double err = Abs(Q-q);
         double tol = acc + eps*Abs(Q);
-        if(err < tol){
+        if(err < tol | eval> 1000){
             return (Q,err,eval);
         }
+
         (double Q1, double err1, int eval1) = integ(f,a,(a+b)/3, acc/Sqrt(2), eps, f1);
         (double Q2, double err2, int eval2) = integ(f,(a+b)/3,2*(a+b)/3, acc/Sqrt(2), eps, f2);
         (double Q3, double err3, int eval3) = integ(f,2*(a+b)/3,b, acc/Sqrt(2), eps, f3);
 
         return (Q1 + Q2 + Q3,Sqrt(Pow(err1,2) + Pow(err2,2) +Pow(err3,2)), eval1+eval2 + eval3);
+        
 
         }//integ
     

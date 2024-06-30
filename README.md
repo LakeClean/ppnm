@@ -16,7 +16,7 @@ Contains three folders: exercises, homeworks and resources. resources contain th
 ---------------------------------------
 | 5  | ODE           | 6 | 3 | - |  9  |
 ---------------------------------------
-| 6  | Integration   | 6 | - | - |  6  |
+| 6  | Integration   | 6 | 3 | - |  9  |
 ---------------------------------------
 | 7  | Monte-Carlo   | 6 | - | - |  6  |
 ---------------------------------------
@@ -27,7 +27,7 @@ Contains three folders: exercises, homeworks and resources. resources contain th
 | 10 | Neural NetWork| 6 | - | - |  6  |
 ---------------------------------------
  ======================================
-|                    total points: 69  |
+|                    total points: 72  |
  ======================================
 
 
