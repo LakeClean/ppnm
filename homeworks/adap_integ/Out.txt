@@ -1,17 +1,17 @@
 ################## Part A:##########################
 Calculating integral for the following functions in interval [0,1]: 
- - sqrt(x) with limits [0,1]: estimate = 0.668497206477494 +/-0.000451854545635342, Correct value = 0.666666666666667. Abs. accuracy goal: 0.001. Number of evaluation: 8
- - 1/sqrt(x) with limits [0,1]: estimate = 1.98996107360906 +/-0.00197891438521893, Correct value = 2. Abs. accuracy goal: 0.01. Number of evaluation: 2146
- - 4sqrt(1-x^2) with limits [0,1]: estimate = 3.16492551135203 +/-0.00612364429674605, Correct value = 3.14159265358979 Abs. accuracy goal: 0.01. Number of evaluation: 6
- - ln(x)/sqrt(x) with limits [0,1]: estimate = -3.97055322690525 +/-0.00638894328969539, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 16658
+ - sqrt(x) with limits [0,1]: estimate = 0.668497206477494 +/-0.000451854545635342, Correct value = 0.666666666666667. Abs. accuracy goal: 0.001. Number of evaluation: 16
+ - 1/sqrt(x) with limits [0,1]: estimate = 1.98996107360906 +/-0.00197891438521893, Correct value = 2. Abs. accuracy goal: 0.01. Number of evaluation: 4292
+ - 4sqrt(1-x^2) with limits [0,1]: estimate = 3.16492551135203 +/-0.00612364429674605, Correct value = 3.14159265358979 Abs. accuracy goal: 0.01. Number of evaluation: 12
+ - ln(x)/sqrt(x) with limits [0,1]: estimate = -3.97055322690525 +/-0.00638894328969539, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 33316
  - 1/x**2 with limits [1,inf]: estimate = 1 +/-0, Correct value = 1. Abs. accuracy goal: 0.01. Number of evaluation: 4
- - x*exp(-x*x) with limits [-inf,inf]: estimate = 0 +/-0, Correct value = 0. Abs. accuracy goal: 0.01. Number of evaluation: 4
+ - x*exp(-x*x) with limits [-inf,inf]: estimate = 0 +/-0, Correct value = 0. Abs. accuracy goal: 0.01. Number of evaluation: 8
 The Number of times the integral approximation is better than sfuns 18/32
  
 ################## Part B:##########################
 We use Clenshaw-Curtis variable transformation: 
- - x*exp(-x*x) with limits [0,1]: estimate = -3.97682113487071 +/-0.00457285124259985, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 26
- - x*exp(-x*x) with limits [0,1]: estimate = 2.01732826712475 +/-0.00668086776241075, Correct value = 2. Abs. accuracy goal: 0.01. Number of evaluation: 4
-We find that the above equations evaluate the integrals in 26 and 4 evaluations respectively.
-I don't think numpy has a well known integrator but scipy does 'scipy.integrate.quad'.
+ - x*exp(-x*x) with limits [0,1]: estimate = -3.97682113487071 +/-0.00457285124259985, Correct value = -4. Abs. accuracy goal: 0.01. Number of evaluation: 52
+ - x*exp(-x*x) with limits [0,1]: estimate = 2.01732826712475 +/-0.00668086776241075, Correct value = 2. Abs. accuracy goal: 0.01. Number of evaluation: 8
+We find that the above equations evaluate the integrals in 52 and 8 evaluations respectively.
+I don't think numpy has a well known integrator but scipy does: 'scipy.integrate.quad'.
 The python integrator with the same abs. and rel accuracy does 231 and 271 evaluations respectively.

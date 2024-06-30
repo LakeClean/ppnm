@@ -5,35 +5,29 @@
 
 ################### Testing: We test our integrator on the following integrals. ###############################
 Function:      Limits:                  Estimate            Tabulated:          Est. error:         Actual error:       N-evaluations:      
-Sin(x)         [0, 1.5707963267949]     0.9991              1                   0.0124              0.0009              3                   
-sqrt(x)        [0, 1]                   0.6722              0.6667              0.0039              0.0055              3                   
-1/sqrt(x)      [0, 1]                   1.8941              2                   0.01                0.1059              10                  
-4sqrt(1-x^2)   [0, 1]                   3.1742              3.1416              0.0322              0.0326              3                   
-ln(x)/sqrt(x)  [0, 1]                   -3.9982             -4                  0.0038              0.0018              74                  
+Sin(x)         [0, 1.5707963267949]     1                   1                   0.0008118672        1.02312E-05         9                   
+sqrt(x)        [0, 1]                   0.6677              0.6667              0.0007587123        0.0010716621        9                   
+1/sqrt(x)      [0, 1]                   1.9997              2                   0.0009580835        0.0002733089        105                 
+4sqrt(1-x^2)   [0, 1]                   3.1419              3.1416              0.001308101         0.0002813385        21                  
+ln(x)/sqrt(x)  [0, 1]                   -3.9999             -4                  0.0009437341        0.0001403994        273                 
 1/x**2         [1, Infinity]            1                   1                   0                   0                   3                   
-exp(x)         [-Infinity, 1]           2.719               2.7183              0.0058              0.0007              10                  
-Sqrt(x)*Exp(-x)[0, Infinity]            0.8956              0.8862              0.0066              0.0093              6                   
+exp(x)         [-Infinity, 1]           2.7182              2.7183              0.0007642443        0.0001093437        27                  
+Sqrt(x)*Exp(-x)[0, Infinity]            0.887               0.8862              0.0006294139        0.0008181864        21                  
 
 #################### Comparing integrator with homework-integrator: #############################
  - Results from homework integrator with the same accuracy and error requirements: 
 Function:      Limits:                  Estimate            Tabulated:          Est. error:         Actual error:       N-evaluations:      
-Sin(x)         [0, 1.5707963267949]     1.0359              1                   0.0185              0.0359              4                   
-sqrt(x)        [0, 1]                   0.6848              0.6667              0.0061              0.0181              4                   
-1/sqrt(x)      [0, 1]                   1.99                2                   0.002               0.01                2146                
-4sqrt(1-x^2)   [0, 1]                   3.1905              3.1416              0.0149              0.0489              4                   
-ln(x)/sqrt(x)  [0, 1]                   -3.9529             -4                  0.0075              0.0471              2146                
+Sin(x)         [0, 1.5707963267949]     1.0021              1                   0.000593686         0.0021478258        16                  
+sqrt(x)        [0, 1]                   0.6685              0.6667              0.0004518545        0.0018305398        16                  
+1/sqrt(x)      [0, 1]                   1.9974              2                   0.0004120126        0.0026499522        8572                
+4sqrt(1-x^2)   [0, 1]                   3.1469              3.1416              0.0012165091        0.0052655765        28                  
+ln(x)/sqrt(x)  [0, 1]                   -3.9926             -4                  0.0007540167        0.0073954593        8604                
 1/x**2         [1, Infinity]            1                   1                   0                   0                   4                   
-exp(x)         [-Infinity, 1]           2.7085              2.7183              0.0048              0.0098              4                   
-Sqrt(x)*Exp(-x)[0, Infinity]            0.8922              0.8862              0.0047              0.0059              8                   
-Number of times exam integrator makes better estimate: 5/8
-Number of times exam error is closer to actual error: 5/8
-0.999989768821327, 0.000811867241415352, 6
+exp(x)         [-Infinity, 1]           2.7259              2.7183              0.0022124108        0.0076449521        36                  
+Sqrt(x)*Exp(-x)[0, Infinity]            0.8875              0.8862              0.0004769665        0.0012879354        32                  
+Number of times exam integrator makes better estimate: 7/8
+Number of times exam error is closer to actual error: 8/8
 
 ###################### Comments: #################################
- - It appears that the homework-integrator that only subdivides into 2 has a lower actual error.
- - The homework integrator makes many more evaluations for some integrals, while we seem 
-     to mitigate this by subdividing in 3 instead of 2.
- - An issue with the program is that we reach Stack Overflow if we require too high an accuracy.
-      I tried to fix this by setting a limit to the number of evaluations so that it at least 
-      returns a value and doesn't just crash the program, but this didn't help. 
-      This problem does not occour for the homework integrator, which can be set to high accuracy.
+ - The homework integrator makes many evaluations for some integrals, with divergences at the endpoints 
+      while we seem to mitigate this by subdividing in 3 instead of 2.

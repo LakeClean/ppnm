@@ -11,23 +11,23 @@ public class main{
         WriteLine(" - These weights are checked in the pdf: 3point_open_quadrature.pdf");
         WriteLine("");
         WriteLine("################### Testing: We test our integrator on the following integrals. ###############################");
-        double acc = 1e-2;
-        double eps = 1e-10;
+        double acc = 1e-3;
+        double eps = 1e-3;
         double integral;
         double error;
-        int neval;
+        int neval = 0;
         
 
         //defining test functions:
         Func<double,double>[] functions = new Func<double,double>[8]{
-            x => Sin(x),
-            x => Sqrt(x),
-            x => 1/Sqrt(x),
-            x => 4*Sqrt(1 - x*x),
-            x => Log(x)/Sqrt(x),
-            x => Pow(x,-2),
-            x => Exp(x),
-            x => Sqrt(x)*Exp(-x),
+            x => {neval++;return Sin(x);},
+            x => {neval++;return Sqrt(x);},
+            x => {neval++;return 1/Sqrt(x);},
+            x => {neval++;return 4*Sqrt(1 - x*x);},
+            x => {neval++;return Log(x)/Sqrt(x);},
+            x => {neval++;return Pow(x,-2);},
+            x => {neval++;return Exp(x);},
+            x => {neval++;return Sqrt(x)*Exp(-x);},
         };
         double[] lower = new double[8]{0,0,0,0,0,1,double.NegativeInfinity,0};
         double[] upper = new double[8]{PI/2,1,1,1,1,double.PositiveInfinity,1,double.PositiveInfinity};
@@ -47,14 +47,15 @@ public class main{
         "Tabulated:".PadRight(20) + "Est. error:".PadRight(20) +
          "Actual error:".PadRight(20) + "N-evaluations:".PadRight(20));
         for(int i = 0; i<functions.Length; i++){
-            (integral,error, neval) = Integ3.integ(functions[i],lower[i],upper[i]);
+            neval = 0;
+            (integral,error) = Integ3.integ(functions[i],lower[i],upper[i],acc,eps);
             string line = $"{text[i]}".PadRight(15);
             line += $"[{lower[i]}, {upper[i]}]".PadRight(25);
             line += $"{Round(integral,4)}".PadRight(20);
             line += $"{Round(correct[i],4)}".PadRight(20);
-            line += $"{Round(error,4)}".PadRight(20);
-            line += $"{Round(Abs(integral-correct[i]),4)}".PadRight(20);
-            line += $"{neval}".PadRight(20);
+            line += $"{Round(error,10)}".PadRight(20);
+            line += $"{Round(Abs(integral-correct[i]),10)}".PadRight(20);
+            line += $"{neval} ".PadRight(20);
             WriteLine(line);
         }
 
@@ -71,17 +72,18 @@ public class main{
         "Tabulated:".PadRight(20) + "Est. error:".PadRight(20) +
          "Actual error:".PadRight(20) + "N-evaluations:".PadRight(20));
         for(int i = 0; i<functions.Length; i++){
-            (integral,error, neval) = Integ.integ(functions[i],lower[i],upper[i]);
+            neval = 0;
+            (integral,error) = Integ.integ(functions[i],lower[i],upper[i],acc,eps);
             string line = $"{text[i]}".PadRight(15);
             line += $"[{lower[i]}, {upper[i]}]".PadRight(25);
             line += $"{Round(integral,4)}".PadRight(20);
             line += $"{Round(correct[i],4)}".PadRight(20);
-            line += $"{Round(error,4)}".PadRight(20);
-            line += $"{Round(Abs(integral-correct[i]),4)}".PadRight(20);
+            line += $"{Round(error,10)}".PadRight(20);
+            line += $"{Round(Abs(integral-correct[i]),10)}".PadRight(20);
             line += $"{neval}".PadRight(20);
             WriteLine(line);
 
-            (double integral3,double error3, int neval3) = Integ3.integ(functions[i],lower[i],upper[i]);
+            (double integral3,double error3) = Integ3.integ(functions[i],lower[i],upper[i],acc,eps);
             if(Abs(integral-correct[i]) > Abs(integral3-correct[i])){N_estimate+=1;};
             if(Abs(Abs(error) - Abs(integral-correct[i])) > Abs(Abs(error3) - Abs(integral3-correct[i]))){N_error+=1;};
 
@@ -90,23 +92,12 @@ public class main{
         }
         WriteLine($"Number of times exam integrator makes better estimate: {N_estimate }/{N}");
         WriteLine($"Number of times exam error is closer to actual error: {N_error }/{N}");
-        (integral,error, neval) = Integ3.integ(functions[0],lower[0],upper[0],0.001,0.000001);
-        WriteLine($"{integral}, {error}, {neval}");
-
-
 
         WriteLine("");
         WriteLine("###################### Comments: #################################");
-        WriteLine(" - It appears that the homework-integrator that only subdivides into 2 has a lower actual error.");
-        WriteLine(" - The homework integrator makes many more evaluations for some integrals, while we seem \n" +
-                    "     to mitigate this by subdividing in 3 instead of 2.");
-        WriteLine(" - An issue with the program is that we reach Stack Overflow if we require too high an accuracy.\n" +
-                    "      I tried to fix this by setting a limit to the number of evaluations so that it at least \n" +
-                    "      returns a value and doesn't just crash the program, but this didn't help. \n" + 
-                    "      This problem does not occour for the homework integrator, which can be set to high accuracy.");
+        WriteLine(" - The homework integrator makes many evaluations for some integrals, with divergences at the endpoints \n" +
+                "      while we seem to mitigate this by subdividing in 3 instead of 2.");
         
-
-
         
         
     }//Main
